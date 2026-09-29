@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlantCareES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>🌱 PlantCareES</h1>
+    <p>Tell us what you see on your plant. We'll work out what's stressing it and how to fix it.</p>
+  </header>
+
+  <main>
+    <section class="card" id="symptomCard">
+
+      <div class="card-head">
+        <h2>What do you notice?</h2>
+        <input type="search" id="searchBox" placeholder="Search symptoms, e.g. yellow, dry, insects" aria-label="Search symptoms">
+      </div>
+
+      <div id="selectedBar" class="selected-bar" aria-live="polite">
+        <span class="hint">No symptoms selected yet. Tick anything that matches your plant.</span>
+      </div>
+
+      <p id="noMatch" class="hidden empty">No symptoms match your search. Try a shorter word.</p>
+
+      <details class="symptom-group" open>
+        <summary><span>🍃 Leaves</span><span class="count" data-count></span></summary>
+        <div class="options">
+          <label><input type="checkbox" value="yellow_leaves"><span>Yellow leaves</span></label>
+          <label><input type="checkbox" value="curled_leaves"><span>Curled leaves</span></label>
+          <label><input type="checkbox" value="sticky_leaves"><span>Sticky leaves</span></label>
+          <label><input type="checkbox" value="dry_leaf_edges"><span>Dry leaf edges</span></label>
+          <label><input type="checkbox" value="brown_leaf_edges"><span>Brown leaf edges</span></label>
+          <label><input type="checkbox" value="yellow_leaf_edges"><span>Yellow leaf edges</span></label>
+          <label><input type="checkbox" value="white_powder"><span>White powder on leaves</span></label>
+          <label><input type="checkbox" value="yellow_speckling"><span>Yellow speckling</span></label>
+          <label><input type="checkbox" value="tiny_leaf_spots"><span>Tiny leaf spots</span></label>
+          <label><input type="checkbox" value="bleached_leaves"><span>Bleached leaves</span></label>
+          <label><input type="checkbox" value="brown_dry_patches"><span>Brown dry patches</span></label>
+          <label><input type="checkbox" value="leaf_scorch"><span>Leaf scorch</span></label>
+          <label><input type="checkbox" value="leaf_drop"><span>Leaf drop</span></label>
+        </div>
+      </details>
+
+      <details class="symptom-group" open>
+        <summary><span>💧 Water &amp; soil</span><span class="count" data-count></span></summary>
+        <div class="options">
+          <label><input type="checkbox" value="wet_soil"><span>Soil stays wet</span></label>
+          <label><input type="checkbox" value="dry_soil"><span>Soil is very dry</span></label>
+          <label><input type="checkbox" value="poor_drainage"><span>Poor drainage</span></label>
+        </div>
+      </details>
+
+      <details class="symptom-group" open>
+        <summary><span>🌿 Growth</span><span class="count" data-count></span></summary>
+        <div class="options">
+          <label><input type="checkbox" value="slow_growth"><span>Slow growth</span></label>
+          <label><input type="checkbox" value="weak_growth"><span>Weak growth</span></label>
+          <label><input type="checkbox" value="stunted_growth"><span>Stunted growth</span></label>
+          <label><input type="checkbox" value="wilting"><span>Wilting</span></label>
+          <label><input type="checkbox" value="pale_growth"><span>Pale growth</span></label>
+        </div>
+      </details>
+
+      <details class="symptom-group" open>
+        <summary><span>🌱 Nutrient clues</span><span class="count" data-count></span></summary>
+        <div class="options">
+          <label><input type="checkbox" value="older_leaves_yellow"><span>Older leaves are yellow</span></label>
+          <label><input type="checkbox" value="lower_leaves_yellow"><span>Lower leaves are yellow</span></label>
+          <label><input type="checkbox" value="older_leaves_affected"><span>Mostly older leaves affected</span></label>
+          <label><input type="checkbox" value="pale_leaves"><span>Pale leaves</span></label>
+        </div>
+      </details>
+
+      <details class="symptom-group" open>
+        <summary><span>🐛 Pests</span><span class="count" data-count></span></summary>
+        <div class="options">
+          <label><input type="checkbox" value="small_insects"><span>Small insects visible</span></label>
+          <label><input type="checkbox" value="webbing"><span>Fine webbing</span></label>
+        </div>
+      </details>
+
+      <details class="symptom-group" open>
+        <summary><span>☀️ Environment</span><span class="count" data-count></span></summary>
+        <div class="options">
+          <label><input type="checkbox" value="low_light"><span>Gets low light</span></label>
+          <label><input type="checkbox" value="strong_direct_sun"><span>Strong direct sunlight</span></label>
+          <label><input type="checkbox" value="hot_dry_conditions"><span>Hot and dry conditions</span></label>
+          <label><input type="checkbox" value="leaning_toward_light"><span>Leans toward the light</span></label>
+          <label><input type="checkbox" value="leaf_surface_affected"><span>Leaf surface is affected</span></label>
+        </div>
+      </details>
+
+    </section>
+
+    <section id="resultSection" class="card results hidden" aria-live="polite">
+      <h2>🔍 Diagnosis</h2>
+      <p id="resultSummary" class="result-summary"></p>
+      <div id="results"></div>
+    </section>
+  </main>
+
+  <footer>PlantCareES · rule-based expert system</footer>
+</div>
+
+<div class="action-bar">
+  <div class="action-inner">
+    <span id="countLabel" class="count-label">0 selected</span>
+    <button id="clearButton" class="secondary" type="button">Clear</button>
+    <button id="diagnoseButton" type="button" disabled>Diagnose plant</button>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden" role="alert"></div>
+
+<script src="/script.js"></script>
+</body>
+</html>
